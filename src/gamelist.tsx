@@ -1,10 +1,9 @@
 import Gamecard from "./gamecard"
+import { GameName } from "./types"
 
 // Properties for the props passed down from Sidebar
 type AddedProps = {
-    gameName: {
-        id: number, priority: number, order: number, game: string
-    }[],
+    gameName: GameName
     deleteGame: (id: number) => void
     updatePriority: (id:number, priority:number) => void
 }

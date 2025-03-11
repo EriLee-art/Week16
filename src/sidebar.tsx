@@ -1,11 +1,10 @@
 import Gamelist from "./gamelist"
 import addIcon from "./assets/plus-solid.svg"
+import { GameName } from "./types"
 
 // Properties for the props passed down from App
 type AddedProps = {
-    gameName: {
-        id: number, priority: number, order: number, game: string
-    }[],
+    gameName: GameName
     addGame: () => void
     deleteGame: (id: number) => void
     updatePriority: (id:number, priority:number) => void
