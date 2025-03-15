@@ -10,55 +10,46 @@ export default function App() {
     {
       id: 0,
       priority: 1,
-      order: 1,
       game: `Red Dead Redemption 2`
     },
     {
       id: 1,
       priority: 1,
-      order: 2,
       game: `Hollow Knight: SilkSong`
     },
     {
       id: 2,
       priority: 1,
-      order: 3,
       game: `Elden Ring: Shadow of the Erdtree`
     },
     {
       id: 3,
       priority: 2,
-      order: 1,
       game: `A Hat In Time`
     },
     {
       id: 4,
       priority: 2,
-      order: 2,
       game: `Halo Infinite`
     },
     {
       id: 5,
       priority: 2,
-      order: 3,
       game: `Grand Theft Auto: 6`
     },
     {
       id: 6,
       priority: 3,
-      order: 1,
       game: `Call of Duty: Black Ops 6`
     },
     {
       id: 7,
       priority: 3,
-      order: 2,
       game: `The Legend of Zelda: Echoes of Wisdom`
     },
     {
       id: 8,
       priority: 3,
-      order: 3,
       game: `Pokemon Legends: Z-A`
     }
   ]
@@ -66,41 +57,41 @@ export default function App() {
   // Base state for gameName to be interacted with
   const [games, setGames] = useState(gameName);
 
+  const [showForm, setShowForm] = useState(false);
+
   // TEST function to add a Game to the array
-  const addGame = () => {
+  const addGame = (priorityValue: number, gameName: string) => {
     const newGame = {
       id: games.length ? games[games.length - 1].id + 1 : 0,
-      priority: 1,
-      order: 4,
-      game: "The Legend of Zelda: Tears of The Kingdom"
+      priority: priorityValue,
+      game: gameName
     }
-
-    setGames( [ ...games, newGame ] )
+    
+    setGames([...games, newGame])
   }
-
+  
   // Delete function to delete a game from the state
   const deleteGame = (idToDelete:number) => {
     setGames( games.filter( game => game.id !== idToDelete) )
   }
-
+  
   // Update function to change which Priority a game is set in
-  const updatePriority = (idToUpdate:number, newPriority:number) => {
+  const updateGame = (idToUpdate:number, property:string, newValue:number) => {
     setGames(games.map( game => (
       game.id !== idToUpdate ? game : {
         ...game,
-        priority: newPriority
+        [property]: newValue
       }
     )))
   }
 
   return(
     <div className="container-fluid row">
-        <div className="col-sm-4">
+      <div className="col-sm-4">
           <Sidebar
           gameName={games}
-          addGame={addGame}
           deleteGame={deleteGame}
-          updatePriority={updatePriority}
+          updateGame={updateGame}
           />
         </div>
         <div className="col">
@@ -108,7 +99,8 @@ export default function App() {
             <Topbar />
           </div>
           <div className="row h-100 align-items-center">
-            <Gamedisplay />
+          <Gamedisplay
+            addGame={addGame} setShowForm={setShowForm} showForm={showForm} />
           </div>
         </div>  
     </div>

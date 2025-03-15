@@ -8,22 +8,21 @@ type AddedProps = {
     gameName: {
         id: number,
         priority: number,
-        order: number,
         game: string
     },
     deleteGame: (id: number) => void
-    updatePriority: (id:number, priority:number) => void
+    updateGame: (id:number, property:string, newValue:number) => void
 }
 
 //Renders the game in a small card for the game list
 
 // Returns the order of the the game alongside the game's name and two buttons for editing and deleting
-export default function Gamecard( {gameName, deleteGame, updatePriority}: AddedProps ) {
+export default function Gamecard( {gameName, deleteGame, updateGame}: AddedProps ) {
 
     return(
     <>
         <div>
-            {gameName.order}: {gameName.game}
+            {gameName.game}
             
                 {
                     /**Dropdown button from react-bootstrap that 
@@ -40,19 +39,19 @@ export default function Gamecard( {gameName, deleteGame, updatePriority}: AddedP
                 >
                     <Dropdown.Item
                         href="#/action-1"
-                        onClick={() => updatePriority(gameName.id, 1)}
+                        onClick={() => updateGame(gameName.id, "priority", 1)}
                     >
                         Priority 1
                     </Dropdown.Item>
                     <Dropdown.Item
                         href="#/action-2"
-                        onClick={() => updatePriority(gameName.id, 2)}
+                        onClick={() => updateGame(gameName.id, "priority", 2)}
                     >
                         Priority 2
                     </Dropdown.Item>
                     <Dropdown.Item
                         href="#/action-3"
-                        onClick={() => updatePriority(gameName.id, 3)}
+                        onClick={() => updateGame(gameName.id, "priority", 3)}
                     >
                         Priority 3
                     </Dropdown.Item>

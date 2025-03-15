@@ -1,15 +1,8 @@
 import Gamecard from "./gamecard"
-import { GameName } from "./types"
-
-// Properties for the props passed down from Sidebar
-type AddedProps = {
-    gameName: GameName
-    deleteGame: (id: number) => void
-    updatePriority: (id:number, priority:number) => void
-}
+import { GameProps } from "./types"
 
 // Creates an ordered list of games for the sidebar
-export default function Gamelist( {gameName, deleteGame, updatePriority}: AddedProps ) {
+export default function Gamelist( {gameName, deleteGame, updateGame}: GameProps ) {
 
     const spacing = `mb-4 mt-1 pt-2`
 
@@ -35,7 +28,7 @@ export default function Gamelist( {gameName, deleteGame, updatePriority}: AddedP
                         key={g.id}
                         gameName={g}
                         deleteGame={deleteGame}
-                        updatePriority={updatePriority}
+                        updateGame={updateGame}
                     />
                 ))}
             </div>
@@ -47,7 +40,7 @@ export default function Gamelist( {gameName, deleteGame, updatePriority}: AddedP
                         key={g.id}
                         gameName={g}
                         deleteGame={deleteGame}
-                        updatePriority={updatePriority}
+                        updateGame={updateGame}
                     />
                 ))}
             </div>                
@@ -59,7 +52,7 @@ export default function Gamelist( {gameName, deleteGame, updatePriority}: AddedP
                         key={g.id}
                         gameName={g}
                         deleteGame={deleteGame}
-                        updatePriority={updatePriority}
+                        updateGame={updateGame}
                     />
                 ))}
             </div>
