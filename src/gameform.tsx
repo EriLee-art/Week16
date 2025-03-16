@@ -5,13 +5,25 @@ type Props = {
     addGame: (priorityValue: number, gameName: string) => void
 }
 
+// Form the user uses
+
 export default function Gameform({ addGame }: Props) {
 
+    // State for currently inputted values from the form to be handled by handleSubmit
     const [inputValues, setInputValues] = useState({
         priority: "...",
         game: ""
     })
 
+    // Clears the form by returning the setInputValues state back to default
+    const clearForm = () => {
+        setInputValues({
+            priority: "...",
+            game: ""
+        })
+    }
+    
+    // Handles the changes caused by users inputting information into the form
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setInputValues({
             ...inputValues,
@@ -19,13 +31,7 @@ export default function Gameform({ addGame }: Props) {
         })
     }
 
-    const clearForm = () => {
-        setInputValues({
-            priority: "...",
-            game: ""
-        })
-    }
-
+    // Handles the submitting of information from the form before resetting the state back to default
     const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         addGame(parseInt(inputValues.priority), inputValues.game);

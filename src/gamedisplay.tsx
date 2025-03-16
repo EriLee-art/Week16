@@ -1,6 +1,6 @@
 import Gameform from "./gameform"
 
-// Displays the game that was chosen via random chance
+// Displays the form the user will use
 
 type Props = {
     addGame: (priorityValue: number, gameName: string) => void
