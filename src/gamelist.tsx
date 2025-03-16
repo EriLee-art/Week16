@@ -4,7 +4,6 @@ import { GameProps } from "./types"
 // Creates an ordered list of games for the sidebar
 export default function Gamelist( {gameName, deleteGame, updateGame}: GameProps ) {
 
-    const spacing = `mb-4 mt-1 pt-2`
 
     // Set of functions for mapping out specific priority games
     const priority1 = gameName.filter(g =>
@@ -21,40 +20,47 @@ export default function Gamelist( {gameName, deleteGame, updateGame}: GameProps 
 
     return(
         <>
-            <h4 className={spacing}>Game Priority 1</h4>
-            <div>
-                {priority1.map( g => (
-                    <Gamecard
-                        key={g.id}
-                        gameName={g}
-                        deleteGame={deleteGame}
-                        updateGame={updateGame}
-                    />
-                ))}
+            <div className="row">
+                <h4>Game Priority 1</h4>
+                <div className="overflow-y-auto" style={{height: "200px"}}>
+                    {priority1.map( g => (
+                        <Gamecard
+                            key={g.id}
+                            gameName={g}
+                            deleteGame={deleteGame}
+                            updateGame={updateGame}
+                        />
+                    ))}
+                </div>
             </div>
 
-            <h4 className={spacing}>Game Priority 2</h4>
-            <div>
-                {priority2.map( g => (
-                    <Gamecard
-                        key={g.id}
-                        gameName={g}
-                        deleteGame={deleteGame}
-                        updateGame={updateGame}
-                    />
-                ))}
-            </div>                
+            
+            <div className="row">
+                <h4>Game Priority 2</h4>
+                <div className="overflow-y-auto" style={{height: "200px"}}>
+                    {priority2.map( g => (
+                        <Gamecard
+                            key={g.id}
+                            gameName={g}
+                            deleteGame={deleteGame}
+                            updateGame={updateGame}
+                        />
+                    ))}
+                </div>
+            </div>
 
-            <h4 className={spacing}>Game Priority 3</h4>
-            <div>
-                {priority3.map( g => (
-                    <Gamecard
-                        key={g.id}
-                        gameName={g}
-                        deleteGame={deleteGame}
-                        updateGame={updateGame}
-                    />
-                ))}
+            <div className="row">
+                <h4>Game Priority 3</h4>
+                <div className="overflow-y-auto" style={{height: "200px"}}>
+                    {priority3.map( g => (
+                        <Gamecard
+                            key={g.id}
+                            gameName={g}
+                            deleteGame={deleteGame}
+                            updateGame={updateGame}
+                        />
+                    ))}
+                </div>
             </div>
         </>
     )

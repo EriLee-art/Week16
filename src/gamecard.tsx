@@ -21,48 +21,53 @@ export default function Gamecard( {gameName, deleteGame, updateGame}: AddedProps
 
     return(
     <>
-        <div>
-            {gameName.game}
+            <div className="d-flex m-2 justify-content-center align-items-center">
+                <div className="fs-5">
+                    {gameName.game}
+                </div>
             
                 {
                     /**Dropdown button from react-bootstrap that 
                      * updates priority*/
                 }
-                <DropdownButton
-                    drop="end"
-                    id="dropdown-classic-button"
-                    variant="success"
-                    title=<img
-                        src={editIcon}
-                        style={{ width: "1rem" }}
-                    />
-                >
-                    <Dropdown.Item
-                        href="#/action-1"
-                        onClick={() => updateGame(gameName.id, "priority", 1)}
+                <div className="d-flex ms-3">
+                    <DropdownButton
+                        drop="end"
+                        id="dropdown-classic-button"
+                        variant="success"
+                        title=<img
+                            src={editIcon}
+                            style={{ width: "1rem" }}
+                        />
                     >
-                        Priority 1
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                        href="#/action-2"
-                        onClick={() => updateGame(gameName.id, "priority", 2)}
+                        <Dropdown.Item
+                            href="#/action-1"
+                            onClick={() => updateGame(gameName.id, "priority", 1)}
+                        >
+                            Priority 1
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                            href="#/action-2"
+                            onClick={() => updateGame(gameName.id, "priority", 2)}
+                        >
+                            Priority 2
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                            href="#/action-3"
+                            onClick={() => updateGame(gameName.id, "priority", 3)}
+                        >
+                            Priority 3
+                        </Dropdown.Item>
+                    </DropdownButton>    
+                </div>
+                <div className="d-flex">
+                    <button
+                        className="btn btn-danger"
+                        onClick={() => deleteGame(gameName.id)}
                     >
-                        Priority 2
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                        href="#/action-3"
-                        onClick={() => updateGame(gameName.id, "priority", 3)}
-                    >
-                        Priority 3
-                    </Dropdown.Item>
-                </DropdownButton>
-                
-                <button
-                    className="btn btn-danger ms-2 p-1"
-                    onClick={() => deleteGame(gameName.id)}
-                >
-                <img src={trashIcon} style={{ width: "1rem" }}/>
-            </button>
+                    <img src={trashIcon} style={{ width: "1rem" }}/>
+                    </button>
+                </div>
         </div>
     </>
     )

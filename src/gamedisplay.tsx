@@ -4,18 +4,16 @@ import Gameform from "./gameform"
 
 type Props = {
     addGame: (priorityValue: number, gameName: string) => void
-    setShowForm: (value:boolean) => void
-    showForm: boolean
 }
 
 
-export default function Gamedisplay( { addGame, setShowForm } : Props) {
+export default function Gamedisplay( { addGame } : Props) {
     return(
         <div className="container-fluid text-center flex-grow-1 d-flex flex-column">
 
-            <h2>GAMING BACKLOG PICKER</h2>
+            <h1 className="m-5">GAMING BACKLOG PICKER</h1>
             
-            <Gameform addGame={addGame} setShowForm={setShowForm} />
+            <Gameform addGame={addGame} />
 
         </div>
 

@@ -57,8 +57,6 @@ export default function App() {
   // Base state for gameName to be interacted with
   const [games, setGames] = useState(gameName);
 
-  const [showForm, setShowForm] = useState(false);
-
   // TEST function to add a Game to the array
   const addGame = (priorityValue: number, gameName: string) => {
     const newGame = {
@@ -87,22 +85,22 @@ export default function App() {
 
   return(
     <div className="container-fluid row">
-      <div className="col-sm-4">
-          <Sidebar
+        <div className="row">
+        <Topbar />
+        </div>
+      <div className="container-xl h-100 col-lg-4">
+        <Sidebar
           gameName={games}
           deleteGame={deleteGame}
           updateGame={updateGame}
-          />
-        </div>
-        <div className="col">
-          <div className="row">
-            <Topbar />
-          </div>
-          <div className="row h-100 align-items-center">
+        />
+      </div>
+      <div className="col">
+        <div className="row h-100 align-items-center">
           <Gamedisplay
-            addGame={addGame} setShowForm={setShowForm} showForm={showForm} />
-          </div>
-        </div>  
+            addGame={addGame} />
+        </div>
+      </div>  
     </div>
   )
 }
