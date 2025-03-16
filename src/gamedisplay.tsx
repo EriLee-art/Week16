@@ -13,6 +13,7 @@ export default function Gamedisplay( { addGame } : Props) {
 
             <h1 className="m-5">GAMING BACKLOG PICKER</h1>
             
+            <h2 className="m-4">Add Games</h2>
             <Gameform addGame={addGame} />
 
         </div>
